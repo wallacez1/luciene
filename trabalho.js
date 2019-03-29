@@ -1,4 +1,5 @@
 const readline = require('readline');
+const remocao = require("./remocao")
 var term = require( 'terminal-kit' ).terminal
 
 const {
@@ -132,7 +133,7 @@ function menu (answer){
                     buscaBinaria()
                     break;
                   case 4:
-                    removerItem()
+                    escolha()
                     break;
                   case 5:
                   console.log('obrigado')
@@ -187,9 +188,31 @@ function bubbleSort(){
 
 }
 
-function removerItem(){
+function escolha(){
+  rl.question('\nEscolha o tipo de exclusão que deseja realizar\n\n 1 - Ordenada 2- Desordenada \n\n', answer => {
+    if(answer === '1'){
+      removerItemOrdenada()
+    }else if(answer === '2'){
+      removerItemDesordenada()
+    }
     
-    rl.question(' Insira o elemento que deseja remover\n\n', answer => {
+  });
+}
+  
+  function removerItemDesordenada(){
+    
+    rl.question(' Insira o elemento que deseja remover \n\n', answer => {
+       var resposta = parseInt(answer,10)
+       var index = array.indexOf(resposta);
+       array.splice(index, 1);
+       console.log(array);
+ });   
+
+}
+
+  function removerItemOrdenada(){
+    
+    rl.question(' Insira o elemento que deseja remover \n\n', answer => {
        var resposta = parseInt(answer,10)
        var inclui = array.includes(resposta);
         
@@ -202,14 +225,12 @@ function removerItem(){
             return element !== resposta;
         });
 
-        rl.question(' Deseja visualizar o novo array\n\n 1 - Sim  2- Não', answer => {
+        rl.question('\nDeseja visualizar o novo array\n\n 1 - Sim  2- Não  \n', answer => {
             if(answer === '1'){
 
                 filtered.sort((a, b) => a - b)
 
-                for (var i = 1; i <= filtered.length; i++) {
-                    console.log(filtered[i - 1]);
-                  }
+                console.log(filtered)
             }
             
           });
