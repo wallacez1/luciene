@@ -14,7 +14,8 @@ const items = [
   '3. Ordenar os elementos (Bubble Sort)',
   '4. Realizar a busca binária por um elemento',
   '5. Excluir um elemento',
-  '6. Encerrar'
+  '6. Realizar Quicksort',
+  '7. Encerrar'
 ] ;
 
 var options = {
@@ -137,9 +138,10 @@ function menu (answer){
                     escolha()
                     break;
                   case 5:
-                  console.log('obrigado')
-                  
-                
+                    quickSort()
+                    break;
+                  case 6:
+                    console.log("\n\n ***Muito Obrigado*** \n\n")
                     break;
                 }
 
@@ -198,6 +200,41 @@ function escolha(){
     }
     
   });
+}
+
+
+
+function quick(arr){
+  if(arr.length <= 1){
+      return arr;
+  }
+  var left = [];
+  var right = [];
+  var pivot = arr[0];
+
+  for (var i = 1; i < arr.length; i++){
+      if(arr[i] < pivot){
+          left.push(arr[i]);
+      }else{
+          right.push(arr[i]);
+      }
+  }
+ return quick(left).concat([pivot]).concat(quick(right));   
+}
+
+function quickSort(){
+  var qarray =  quick(array)
+
+  rl.question('\nDeseja visualizar o novo array\n\n 1 - Sim  2- Não  \n', answer => {
+    if(answer === '1'){
+
+      
+
+        console.log(qarray)
+    }
+    
+  });
+
 }
   
   function removerItemDesordenada(){

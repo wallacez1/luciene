@@ -81,13 +81,15 @@ function decisao(){
     });
 }
 
-function qsort(arr){
+function qsort(){
+    
     if(arr.length <= 1){
         return arr;
     }
     var left = [];
     var right = [];
     var pivot = arr[0];
+    var quickArray = []
 
     for (var i = 1; i < arr.length; i++){
         if(arr[i] < pivot){
@@ -96,7 +98,9 @@ function qsort(arr){
             right.push(arr[i]);
         }
     }
-   return qsort(left).concat([pivot]).concat(qsort(right));   
+   quickArray.push(qsort(left).concat([pivot]).concat(qsort(right)));
+   
+   console.log(quickArray)
 }
 
 function getRandomInt(min, max){
