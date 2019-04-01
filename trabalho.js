@@ -2,6 +2,7 @@ const readline = require('readline');
 const remocao = require("./remocao")
 var term = require( 'terminal-kit' ).terminal
 
+/*sadadasdasdsad*/
 const {
   performance
 } = require('perf_hooks');
